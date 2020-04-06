@@ -27,6 +27,13 @@ jobs:
         service_account_key: ${{ secrets.RUN_SA_KEY }}
         project_id: ${{ secrets.RUN_PROJECT }}
         export_default_credentials: true
+
+    - uses: actions-hub/gcloud@master
+    env:
+      PROJECT_ID: test
+      APPLICATION_CREDENTIALS: ${{ secrets.RUN_SA_KEY }}
+    with:
+      args: info
     
     - name: Configure Docker to use Google Cloud Platform
       run: "gcloud auth configure-docker --quiet"
