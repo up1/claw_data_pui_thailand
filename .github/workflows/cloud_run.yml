@@ -36,6 +36,7 @@ jobs:
     # Deploy image to Cloud Run
     - name: Deploy
       run: |-
+        gcloud config set account ACCOUNT
         gcloud run deploy "$SERVICE_NAME" \
           --quiet \
           --region "$RUN_REGION" \
