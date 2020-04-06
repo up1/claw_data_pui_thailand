@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: us-central1
-  SERVICE_NAME: update_data_covid_19
+  SERVICE_NAME: update-data-covid-19
 
 jobs:
   setup-build-deploy:
@@ -29,10 +29,12 @@ jobs:
         export_default_credentials: true
     - uses: GoogleCloudPlatform/github-actions/get-secretmanager-secrets@master
     
+    - name: Configure Docker to use Google Cloud Platform
+      run: "gcloud auth configure-docker --quiet"
+
     # Build and push image to Google Container Registry
     - name: Build
       run: |-
-        gcloud auth activate-service-account ${{ secrets.RUN_SA_EMAIL }}
         gcloud builds submit \
           --quiet \
           --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
