@@ -76,7 +76,7 @@ const puppeteer = require('puppeteer');
                   "id": _id,
                   "fields": {
                     "Date": resultUpdatedDate,
-                    "Total": parseInt(resultTotalTests.replace(/,/g, ''), 10) + 100,
+                    "Total": parseInt(resultTotalTests.replace(/,/g, ''), 10),
                     "Daily": parseInt(resultDailyTests.replace(/,/g, ''), 10),
                     "NewCase": parseInt(resultNewCase.replace(/,/g, ''), 10),
                   }
