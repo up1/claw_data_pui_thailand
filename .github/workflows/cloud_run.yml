@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: us-central1
-  SERVICE_NAME: helloworld-nodejs
+  SERVICE_NAME: update_data_covid_19
 
 jobs:
   setup-build-deploy:
